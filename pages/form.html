@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled Form</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* -----------------font_style */
+      .montserrat-400 {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .montserrat-600 {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+      }
+      /* -----------------font_style */
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #5f052b;
+  
+      }
+      .form_container {
+        margin-top: 0;
+        background-image: url(../Images//ziya\ card\ background.jpg);
+        background-size: cover;
+        background-position: center;
+        width: 30%;
+        padding: 20px;
+        border-radius: 32px;
+        box-shadow: 0px 0px 50px 28px rgb(0 0 0 / 45%); 
+      }
+      .two-input {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .sub-input {
+        width: 48%;
+      }
+
+      /* Extra large devices (large laptops and desktops, 1200px and up) */
+      @media only screen and (min-width: 1200px) {
+        .container {
+          width: 40%;
+        }
+      }
+
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        .container {
+          width: 40%;
+        }
+      }
+
+      /* Medium devices (landscape tablets, 768px and up) */
+      @media only screen and (min-width: 768px) {
+        .form-label {
+          font-size: 0.9rem;
+          /* Decrease font size for smaller screens */
+        }
+
+        .container {
+          width: 40%;
+        }
+      }
+
+      /* Small devices (portrait tablets and large phones, 600px and up) */
+      @media only screen and (min-width: 600px) {
+        .form-label {
+          font-size: 0.9rem;
+          /* Decrease font size for smaller screens */
+        }
+
+        .container {
+          width: 40%;
+        }
+      }
+
+      /* Extra small devices (phones, 600px and down) */
+      @media only screen and (max-width: 600px) {
+        .form-label {
+          font-size: 0.9rem;
+          /* Decrease font size for smaller screens */
+        }
+
+        .container {
+          width: 90%;
+        }
+      }
+
+      @media only screen and (max-width: 576px) {
+        .form_container {
+          width: 100%;
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="montserrat-400">
+    <div class="container form_container my-0 my-md-4">
+      <p id="errorMessage" style="display: none; color: red; font-weight: 600">
+        Please Enter the Details
+      </p>
+      <!-- <div class="form-group">
+        <label for="exampleInputName1">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputFirstName"
+          aria-describedby="emailHelp"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          aria-describedby="emailHelp"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPhone1">Phone Number</label>
+        <input
+          type="phone"
+          class="form-control"
+          id="inputPhoneNumber"
+          required
+        />
+        <div class="form-group">
+        <label for="exampleInputPlace1">Place</label>
+        <input  type="text" class="form-control" id="inputPlace" required />
+      </div>
+      </div> -->
+      <div class="container-fluid">
+        <div class="row">
+          <input
+            placeholder="Full name"
+            type="text"
+            class="form-control col-12 my-2"
+            required
+          />
+          <input
+            placeholder="Phone number"
+            type="number"
+            class="form-control col-12 my-2"
+            required
+          />
+          <input
+            placeholder="Email address"
+            type="mail"
+            class="form-control col-12 my-2"
+            required
+          />
+          <select
+            name=""
+            id=""
+            class="form-control col-12 my-2 p-2"
+            style="border-radius: 4px"
+          >
+            <option value="">Select emirates</option>
+            <option value="">Abu Dhabi</option>
+            <option value="">Sharjah</option>
+            <option value="">Dubai</option>
+            <option value="">Ajman</option>
+            <option value="">Raz al Khaima</option>
+            <option value="">Umm al quain</option>
+            <option value="">Fujairah</option>
+          </select>
+         
+            <select name="" id="" class="form-control sub-input my-2 p-2 col-12">
+              <option value="">Select nationality</option>
+            </select>
+            <select name="" id="" class="form-control sub-input my-2 p-2 col-12">
+              <option value="">Select state</option>
+            </select>
+         
+            <input
+            type="text"
+            placeholder="Spouse name"
+            class="form-control sub-input mb-2 p-2 col-12"
+          />
+            <label for="" class="sub-input p-0 ">Date of birth</label>
+          
+            <input type="date" class="form-control sub-input mb-2 p-2 col-12" />
+            <label for="" class="sub-input p-0 ">Date of anniversary</label>
+            <input type="date" class="form-control sub-input mb-2 col-12 p-2" />
+  
+            <label for="" class="sub-input p-0">DOB of spouse</label>
+            <input type="date" class="sub-input mb-2 p-2 col-12 form-control" />
+          
+           
+            
+          
+          <div class="col-12 p-0 two-input">
+            <label for="" class="sub-input p-0 col-12">In which medium would you prefer us to contact you</label>
+          </div>
+          <div
+            style="display: flex; align-items: center; justify-content: start; width: 100%;"
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 30%;
+              "
+            >
+              <input
+                type="radio"
+                id="sms"
+                name="fav_language"
+                value="sms"
+                class="m-3"
+              />
+              <input
+                type="radio"
+                id="email"
+                name="fav_language"
+                value="email"
+                class="m-3"
+              />
+              <input
+                type="radio"
+                id="phone"
+                name="fav_language"
+                value="phone"
+                class="m-3"
+              />
+              <input
+                type="radio"
+                id="not-intrested"
+                name="fav_language"
+                value="not-intrested"
+                class="m-3"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                width: 70%;
+              "
+            >
+              <label for="sms" class="m-0">SMS</label>
+                <label for="email" class="m-0">Email</label>  
+              <label for="phone" class="m-0">Phone</label>  
+              <label for="not-intrested" class="m-0">Not intrested</label>
+            </div>
+          </div>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Any other comments or suggestion (optional)" class="col-12 form-control"></textarea>
+        </div>
+        <div class="col-12" style="display: flex; align-items: center; justify-content: center;">
+          <button
+          type="submit"
+          class="btn my-4"
+          style="background-color: #a08906; color: #fff;  box-shadow: -8px 8px 12px 3px rgb(0 0 0 / 45%); width: 30%; "
+          id="saveChangesBtn"
+         
+        >
+          Submit
+        </button>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
+  <script type="module" src="../config/db.js"></script>
+  <script type="module" src="../js/form.js"></script>
+</html>
