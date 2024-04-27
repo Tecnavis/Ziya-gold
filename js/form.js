@@ -22,6 +22,7 @@ async function saveChanges() {
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
     const place = document.getElementById('inputPlace').value.trim();
+    const emirates = document.getElementById('inputEmirates').value.trim();
 
     const uid = 'NTqIUsvcrtSj3zO9zdY9X4vUELf2';
 
@@ -31,13 +32,14 @@ async function saveChanges() {
     }
 
     // Validate inputs
-    if (validateInputs(firstName, phoneNumber, email, place)) {
+    if (validateInputs(firstName, phoneNumber, email)) {
         const dataToSave = {
             firstName: firstName,
             phoneNumber: phoneNumber,
             email: email,
             place: place,
-            timestamp: timestamp
+            timestamp: timestamp,
+            emirates: emirates
         };
 
         const userDocRef = collection(firestore, `users/${uid}/table`);
@@ -55,8 +57,8 @@ async function saveChanges() {
     }
 }
 
-function validateInputs(firstName, phoneNumber, email, place) {
-    if (!firstName || !phoneNumber || !email || !place) {
+function validateInputs(firstName, phoneNumber, email,  emirates, place) {
+    if (!firstName || !phoneNumber || !email  || !emirates || place) {
         showError('Please fill in all required fields.');
         return false;
     }

@@ -38,18 +38,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #5f052b;
-  
+        background-image: url(../Images/smooth-golden-textured-material.jpg);
+        background-position: center;
+        background-size: cover;
+        
       }
       .form_container {
         margin-top: 0;
-        background-image: url(../Images//ziya\ card\ background.jpg);
+        background-image: url(../Images/ziya\ card\ background.jpg);
         background-size: cover;
         background-position: center;
         width: 30%;
         padding: 20px;
         border-radius: 32px;
-        box-shadow: 0px 0px 50px 28px rgb(0 0 0 / 45%); 
+        box-shadow: 0px 0px 50px 28px rgb(0 0 0 / 45%);
+        color: white;
       }
       .two-input {
         display: flex;
@@ -59,7 +62,84 @@
       .sub-input {
         width: 48%;
       }
+      .form-1 {
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        
+        background-image: url(../Images/Rectangle\ 5.png);
+        background-size: cover;
+        background-position: center;
+      }
+      .form-2 {
+        border-radius: 12px;
+        padding: 20px;
+        background-image: url(../Images/Rectangle\ 5.png);
+        background-size: cover;
+        background-position: center;
+      }
+      .button {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  background-color: #d69d01;
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: .75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color .3s;
+}
+.btn-text{
+  color: rgb(255, 255, 255);
+}
 
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: #d69d01;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.button:hover {
+  background-color: #000000;
+  
+}
+
+.button:hover .btn-text{
+  color: rgb(255, 255, 255);
+}
+
+.button:hover .button__icon-wrapper {
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+}
+
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.button:hover .button__icon-svg:first-child {
+  transition: transform .3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.button:hover .button__icon-svg--copy {
+  transition: transform .3s ease-in-out .1s;
+  transform: translate(0);
+}
       /* Extra large devices (large laptops and desktops, 1200px and up) */
       @media only screen and (min-width: 1200px) {
         .container {
@@ -115,6 +195,8 @@
           width: 100%;
           border-radius: 0;
         }
+       
+
       }
     </style>
   </head>
@@ -124,170 +206,140 @@
       <p id="errorMessage" style="display: none; color: red; font-weight: 600">
         Please Enter the Details
       </p>
-      <!-- <div class="form-group">
-        <label for="exampleInputName1">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputFirstName"
-          aria-describedby="emailHelp"
-          required
-        />
+      <div class="container-fluid form-1">
+        <div class="row">
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputName1">Name</label> -->
+            <input
+              type="text"
+              class="form-control"
+              id="inputFirstName"
+              aria-describedby="emailHelp"
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputEmail1">Email Address</label> -->
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Email address"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputPhone1">Phone Number</label> -->
+            <input
+              type="phone"
+              class="form-control"
+              id="inputPhoneNumber"
+              placeholder="Phone number"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputPlace1">place</label> -->
+
+            <input type="text" class="form-control" id="inputPlace" required placeholder="Place"/>
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Birthday</label>
+
+            <input
+              type="date"
+              class="form-control"
+              id="inputBirthda"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Emirates</label>
+            <select
+              name=""
+              id="inputEmirates"
+              class="form-control col-12 p-2"
+              style="border-radius: 4px"
+            >
+              <option value="">Select Emirates</option>
+              <option value="">Abu Dhabi</option>
+              <option value="">Sharjah</option>
+              <option value="">Dubai</option>
+              <option value="">Ajman</option>
+              <option value="">Raz al Khaima</option>
+              <option value="">Umm al quain</option>
+              <option value="">Fujairah</option>
+            </select>
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Nationality</label>
+            <select
+              name=""
+              id="inputNationality"
+              class="form-control col-12 p-2"
+              style="border-radius: 4px"
+            >
+              <option value="">Select Nationality</option>
+            </select>
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">States</label>
+            <select
+              name=""
+              id="inputState"
+              class="form-control col-12 p-2"
+              style="border-radius: 4px"
+            >
+              <option value="">Select State</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email Address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="inputEmail"
-          aria-describedby="emailHelp"
-          required
-        />
+
+      <div class="container-fluid form-2">
+        <div class="row">
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Pos No</label>
+            <input type="number" id="inputPosNo" class="form-control"  required/>
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Purchase amount</label>
+            <input
+              type="number"
+              id="inputPurchaseAmount"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPhone1">Phone Number</label>
-        <input
-          type="phone"
-          class="form-control"
-          id="inputPhoneNumber"
-          required
-        />
-        <div class="form-group">
-        <label for="exampleInputPlace1">Place</label>
-        <input  type="text" class="form-control" id="inputPlace" required />
-      </div>
-      </div> -->
+
       <div class="container-fluid">
         <div class="row">
-          <input
-            placeholder="Full name"
-            type="text"
-            class="form-control col-12 my-2"
-            required
-          />
-          <input
-            placeholder="Phone number"
-            type="number"
-            class="form-control col-12 my-2"
-            required
-          />
-          <input
-            placeholder="Email address"
-            type="mail"
-            class="form-control col-12 my-2"
-            required
-          />
-          <select
-            name=""
-            id=""
-            class="form-control col-12 my-2 p-2"
-            style="border-radius: 4px"
-          >
-            <option value="">Select emirates</option>
-            <option value="">Abu Dhabi</option>
-            <option value="">Sharjah</option>
-            <option value="">Dubai</option>
-            <option value="">Ajman</option>
-            <option value="">Raz al Khaima</option>
-            <option value="">Umm al quain</option>
-            <option value="">Fujairah</option>
-          </select>
-         
-            <select name="" id="" class="form-control sub-input my-2 p-2 col-12">
-              <option value="">Select nationality</option>
-            </select>
-            <select name="" id="" class="form-control sub-input my-2 p-2 col-12">
-              <option value="">Select state</option>
-            </select>
-         
-            <input
-            type="text"
-            placeholder="Spouse name"
-            class="form-control sub-input mb-2 p-2 col-12"
-          />
-            <label for="" class="sub-input p-0 ">Date of birth</label>
-          
-            <input type="date" class="form-control sub-input mb-2 p-2 col-12" />
-            <label for="" class="sub-input p-0 ">Date of anniversary</label>
-            <input type="date" class="form-control sub-input mb-2 col-12 p-2" />
-  
-            <label for="" class="sub-input p-0">DOB of spouse</label>
-            <input type="date" class="sub-input mb-2 p-2 col-12 form-control" />
-          
-           
-            
-          
-          <div class="col-12 p-0 two-input">
-            <label for="" class="sub-input p-0 col-12">In which medium would you prefer us to contact you</label>
-          </div>
           <div
-            style="display: flex; align-items: center; justify-content: start; width: 100%;"
+            class="col-12"
+            style="display: flex; align-items: center; justify-content: center"
           >
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                width: 30%;
-              "
-            >
-              <input
-                type="radio"
-                id="sms"
-                name="fav_language"
-                value="sms"
-                class="m-3"
-              />
-              <input
-                type="radio"
-                id="email"
-                name="fav_language"
-                value="email"
-                class="m-3"
-              />
-              <input
-                type="radio"
-                id="phone"
-                name="fav_language"
-                value="phone"
-                class="m-3"
-              />
-              <input
-                type="radio"
-                id="not-intrested"
-                name="fav_language"
-                value="not-intrested"
-                class="m-3"
-              />
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                width: 70%;
-              "
-            >
-              <label for="sms" class="m-0">SMS</label>
-                <label for="email" class="m-0">Email</label>  
-              <label for="phone" class="m-0">Phone</label>  
-              <label for="not-intrested" class="m-0">Not intrested</label>
-            </div>
+           
+            <a style="--clr: #7808d0" class="button mt-4"  type="submit" id="saveChangesBtn">
+              <span class="button__icon-wrapper">
+                  <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                      <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                  </svg>
+                  
+                  <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+                      <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+                  </svg>
+              </span>
+              <span class="btn-text">
+                Submit
+              </span>
+              
+          </a>
           </div>
-          <textarea name="" id="" cols="30" rows="10" placeholder="Any other comments or suggestion (optional)" class="col-12 form-control"></textarea>
         </div>
-        <div class="col-12" style="display: flex; align-items: center; justify-content: center;">
-          <button
-          type="submit"
-          class="btn my-4"
-          style="background-color: #a08906; color: #fff;  box-shadow: -8px 8px 12px 3px rgb(0 0 0 / 45%); width: 30%; "
-          id="saveChangesBtn"
-         
-        >
-          Submit
-        </button>
-        </div>
-        
       </div>
     </div>
   </body>
