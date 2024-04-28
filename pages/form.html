@@ -206,17 +206,139 @@
   </style>
 </head>
 
-<body class="montserrat-400">
-  <div class="container form_container my-0 my-md-4">
-    <p id="errorMessage" style="display: none; color: red; font-weight: 600">
-      Please Enter the Details
-    </p>
-    <div class="container-fluid form-1">
-      <div class="row">
-        <div class="form-group col-12">
-          <!-- <label for="exampleInputName1">Name</label> -->
-          <input type="text" class="form-control" id="inputFirstName" aria-describedby="emailHelp" placeholder="Name"
-            required />
+        <!-- .container {
+          width: 40%;
+        }
+      }
+
+      /* Small devices (portrait tablets and large phones, 600px and up) */
+      @media only screen and (min-width: 600px) {
+        .form-label {
+          font-size: 0.9rem;
+          /* Decrease font size for smaller screens */
+        }
+
+        .container {
+          width: 40%;
+        }
+      }
+
+      /* Extra small devices (phones, 600px and down) */
+      @media only screen and (max-width: 600px) {
+        .form-label {
+          font-size: 0.9rem;
+          /* Decrease font size for smaller screens */
+        }
+
+        .container {
+          width: 90%;
+        }
+      }
+
+      @media only screen and (max-width: 576px) {
+        .form_container {
+          width: 100%;
+          border-radius: 0;
+        }
+       
+
+      }
+    </style>
+  </head> -->
+
+  <body class="montserrat-400">
+    <div class="container form_container my-0 my-md-4">
+      <p id="errorMessage" style="display: none; color: red; font-weight: 600">
+        Please Enter the Details
+      </p>
+      <div class="container-fluid form-1">
+        <div class="row">
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputName1">Name</label> -->
+            <input
+              type="text"
+              class="form-control"
+              id="inputFirstName"
+              aria-describedby="emailHelp"
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputEmail1">Email Address</label> -->
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Email address"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputPhone1">Phone Number</label> -->
+            <input
+              type="phone"
+              class="form-control"
+              id="inputPhoneNumber"
+              placeholder="Phone number"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <!-- <label for="exampleInputPlace1">place</label> -->
+
+            <input type="text" class="form-control" id="inputPlace" required placeholder="Place"/>
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Birthday</label>
+
+            <input
+              type="date"
+              class="form-control"
+              id="inputBirthda"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Emirates</label>
+            <select
+              name=""
+              id="inputEmirates"
+              class="form-control col-12 p-2"
+              style="border-radius: 4px"
+            >
+              <option value="">Select Emirates</option>
+              <option value="">Abu Dhabi</option>
+              <option value="">Sharjah</option>
+              <option value="">Dubai</option>
+              <option value="">Ajman</option>
+              <option value="">Raz al Khaima</option>
+              <option value="">Umm al quain</option>
+              <option value="">Fujairah</option>
+            </select>
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">Nationality</label>
+            <input
+            type="Nationality"
+            class="form-control"
+            id="inputNationality"
+            placeholder="Nationality"
+            
+          />
+          </div>
+          <div class="form-group col-12">
+            <label for="exampleInputPlace1">States</label>
+            <input
+            type="States"
+            class="form-control"
+            id="inputState"
+            placeholder="States"
+            
+          />
+           
+          </div>
         </div>
         <div class="form-group col-12">
           <!-- <label for="exampleInputEmail1">Email Address</label> -->
