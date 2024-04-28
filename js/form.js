@@ -18,11 +18,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function saveChanges() {
+    console.log('666');
     const firstName = document.getElementById('inputFirstName').value.trim();
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
     const place = document.getElementById('inputPlace').value.trim();
+    const birthday = document.getElementById('inputBirthday').value.trim();
     const emirates = document.getElementById('inputEmirates').value.trim();
+    const nationality = document.getElementById('inputNationality').value.trim();
+    const state = document.getElementById('inputState').value.trim();
+    const posNo = document.getElementById('inputPosNo').value.trim();
+    const purchaseAmount = document.getElementById('inputPurchaseAmount').value.trim();
 
     const uid = 'NTqIUsvcrtSj3zO9zdY9X4vUELf2';
 
@@ -32,14 +38,19 @@ async function saveChanges() {
     }
 
     // Validate inputs
-    if (validateInputs(firstName, phoneNumber, email)) {
+    if (validateInputs(firstName, phoneNumber, email, place, birthday, emirates, nationality, state, posNo, purchaseAmount)) {
         const dataToSave = {
             firstName: firstName,
             phoneNumber: phoneNumber,
             email: email,
             place: place,
+            birthday: birthday,
+            emirates: emirates,
+            nationality: nationality,
+            state: state,
+            posNo: posNo,
+            purchaseAmount: purchaseAmount,
             timestamp: timestamp,
-            emirates: emirates
         };
 
         const userDocRef = collection(firestore, `users/${uid}/table`);
@@ -57,8 +68,8 @@ async function saveChanges() {
     }
 }
 
-function validateInputs(firstName, phoneNumber, email,  emirates, place) {
-    if (!firstName || !phoneNumber || !email  || !emirates || place) {
+function validateInputs(firstName, phoneNumber, email, place, birthday, emirates, nationality, state, posNo, purchaseAmount) {
+    if (!firstName || !phoneNumber || !email || !place || !birthday || !emirates || !nationality || !state || !posNo || !purchaseAmount) {
         showError('Please fill in all required fields.');
         return false;
     }

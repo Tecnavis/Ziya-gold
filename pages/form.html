@@ -1,351 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Styled Form</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
 
-    <style>
-      /* -----------------font_style */
-      .montserrat-400 {
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      }
-      .montserrat-600 {
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 600;
-        font-style: normal;
-      }
-      /* -----------------font_style */
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styled Form</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
 
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-image: url(../Images/smooth-golden-textured-material.jpg);
-        background-position: center;
-        background-size: cover;
-        
+  <style>
+    /* -----------------font_style */
+    .montserrat-400 {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .montserrat-600 {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    /* -----------------font_style */
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url(../Images/smooth-golden-textured-material.jpg);
+      background-position: center;
+      background-size: cover;
+
+    }
+
+    .form_container {
+      margin-top: 0;
+      background-image: url(../Images/ziya\ card\ background.jpg);
+      background-size: cover;
+      background-position: center;
+      width: 30%;
+      padding: 20px;
+      border-radius: 32px;
+      box-shadow: 0px 0px 50px 28px rgb(0 0 0 / 45%);
+      color: white;
+    }
+
+    .two-input {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sub-input {
+      width: 48%;
+    }
+
+    .form-1 {
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      background-image: url(../Images/Rectangle\ 5.png);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .form-2 {
+      border-radius: 12px;
+      padding: 20px;
+      background-image: url(../Images/Rectangle\ 5.png);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .button {
+      line-height: 1;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      background-color: #d69d01;
+      color: #fff;
+      border-radius: 10rem;
+      font-weight: 600;
+      padding: .75rem 1.5rem;
+      padding-left: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background-color .3s;
+    }
+
+    .btn-text {
+      color: rgb(255, 255, 255);
+    }
+
+    .button__icon-wrapper {
+      flex-shrink: 0;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      color: #d69d01;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .button:hover {
+      background-color: #000000;
+
+    }
+
+    .button:hover .btn-text {
+      color: rgb(255, 255, 255);
+    }
+
+    .button:hover .button__icon-wrapper {
+      color: #000000;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .button__icon-svg--copy {
+      position: absolute;
+      transform: translate(-150%, 150%);
+    }
+
+    .button:hover .button__icon-svg:first-child {
+      transition: transform .3s ease-in-out;
+      transform: translate(150%, -150%);
+    }
+
+    .button:hover .button__icon-svg--copy {
+      transition: transform .3s ease-in-out .1s;
+      transform: translate(0);
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      .container {
+        width: 40%;
       }
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+      .container {
+        width: 40%;
+      }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+      .form-label {
+        font-size: 0.9rem;
+        /* Decrease font size for smaller screens */
+      }
+
+      .container {
+        width: 40%;
+      }
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      .form-label {
+        font-size: 0.9rem;
+        /* Decrease font size for smaller screens */
+      }
+
+      .container {
+        width: 40%;
+      }
+    }
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      .form-label {
+        font-size: 0.9rem;
+        /* Decrease font size for smaller screens */
+      }
+
+      .container {
+        width: 90%;
+      }
+    }
+
+    @media only screen and (max-width: 576px) {
       .form_container {
-        margin-top: 0;
-        background-image: url(../Images/ziya\ card\ background.jpg);
-        background-size: cover;
-        background-position: center;
-        width: 30%;
-        padding: 20px;
-        border-radius: 32px;
-        box-shadow: 0px 0px 50px 28px rgb(0 0 0 / 45%);
-        color: white;
-      }
-      .two-input {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .sub-input {
-        width: 48%;
-      }
-      .form-1 {
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-        
-        background-image: url(../Images/Rectangle\ 5.png);
-        background-size: cover;
-        background-position: center;
-      }
-      .form-2 {
-        border-radius: 12px;
-        padding: 20px;
-        background-image: url(../Images/Rectangle\ 5.png);
-        background-size: cover;
-        background-position: center;
-      }
-      .button {
-  line-height: 1;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: .75rem;
-  background-color: #d69d01;
-  color: #fff;
-  border-radius: 10rem;
-  font-weight: 600;
-  padding: .75rem 1.5rem;
-  padding-left: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background-color .3s;
-}
-.btn-text{
-  color: rgb(255, 255, 255);
-}
-
-.button__icon-wrapper {
-  flex-shrink: 0;
-  width: 25px;
-  height: 25px;
-  position: relative;
-  color: #d69d01;
-  background-color: #ffffff;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-.button:hover {
-  background-color: #000000;
-  
-}
-
-.button:hover .btn-text{
-  color: rgb(255, 255, 255);
-}
-
-.button:hover .button__icon-wrapper {
-  color: #000000;
-  background-color: rgb(255, 255, 255);
-}
-
-.button__icon-svg--copy {
-  position: absolute;
-  transform: translate(-150%, 150%);
-}
-
-.button:hover .button__icon-svg:first-child {
-  transition: transform .3s ease-in-out;
-  transform: translate(150%, -150%);
-}
-
-.button:hover .button__icon-svg--copy {
-  transition: transform .3s ease-in-out .1s;
-  transform: translate(0);
-}
-      /* Extra large devices (large laptops and desktops, 1200px and up) */
-      @media only screen and (min-width: 1200px) {
-        .container {
-          width: 40%;
-        }
+        width: 100%;
+        border-radius: 0;
       }
 
-      /* Large devices (laptops/desktops, 992px and up) */
-      @media only screen and (min-width: 992px) {
-        .container {
-          width: 40%;
-        }
-      }
 
-      /* Medium devices (landscape tablets, 768px and up) */
-      @media only screen and (min-width: 768px) {
-        .form-label {
-          font-size: 0.9rem;
-          /* Decrease font size for smaller screens */
-        }
+    }
+  </style>
+</head>
 
-        .container {
-          width: 40%;
-        }
-      }
-
-      /* Small devices (portrait tablets and large phones, 600px and up) */
-      @media only screen and (min-width: 600px) {
-        .form-label {
-          font-size: 0.9rem;
-          /* Decrease font size for smaller screens */
-        }
-
-        .container {
-          width: 40%;
-        }
-      }
-
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
-        .form-label {
-          font-size: 0.9rem;
-          /* Decrease font size for smaller screens */
-        }
-
-        .container {
-          width: 90%;
-        }
-      }
-
-      @media only screen and (max-width: 576px) {
-        .form_container {
-          width: 100%;
-          border-radius: 0;
-        }
-       
-
-      }
-    </style>
-  </head>
-
-  <body class="montserrat-400">
-    <div class="container form_container my-0 my-md-4">
-      <p id="errorMessage" style="display: none; color: red; font-weight: 600">
-        Please Enter the Details
-      </p>
-      <div class="container-fluid form-1">
-        <div class="row">
-          <div class="form-group col-12">
-            <!-- <label for="exampleInputName1">Name</label> -->
-            <input
-              type="text"
-              class="form-control"
-              id="inputFirstName"
-              aria-describedby="emailHelp"
-              placeholder="Name"
-              required
-            />
-          </div>
-          <div class="form-group col-12">
-            <!-- <label for="exampleInputEmail1">Email Address</label> -->
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmail"
-              aria-describedby="emailHelp"
-              placeholder="Email address"
-              required
-            />
-          </div>
-          <div class="form-group col-12">
-            <!-- <label for="exampleInputPhone1">Phone Number</label> -->
-            <input
-              type="phone"
-              class="form-control"
-              id="inputPhoneNumber"
-              placeholder="Phone number"
-              required
-            />
-          </div>
-          <div class="form-group col-12">
-            <!-- <label for="exampleInputPlace1">place</label> -->
-
-            <input type="text" class="form-control" id="inputPlace" required placeholder="Place"/>
-          </div>
-          <div class="form-group col-12">
-            <label for="exampleInputPlace1">Birthday</label>
-
-            <input
-              type="date"
-              class="form-control"
-              id="inputBirthda"
-              required
-            />
-          </div>
-          <div class="form-group col-12">
-            <label for="exampleInputPlace1">Emirates</label>
-            <select
-              name=""
-              id="inputEmirates"
-              class="form-control col-12 p-2"
-              style="border-radius: 4px"
-            >
-              <option value="">Select Emirates</option>
-              <option value="">Abu Dhabi</option>
-              <option value="">Sharjah</option>
-              <option value="">Dubai</option>
-              <option value="">Ajman</option>
-              <option value="">Raz al Khaima</option>
-              <option value="">Umm al quain</option>
-              <option value="">Fujairah</option>
-            </select>
-          </div>
-          <div class="form-group col-12">
-            <label for="exampleInputPlace1">Nationality</label>
-            <select
-              name=""
-              id="inputNationality"
-              class="form-control col-12 p-2"
-              style="border-radius: 4px"
-            >
-              <option value="">Select Nationality</option>
-            </select>
-          </div>
-          <div class="form-group col-12">
-            <label for="exampleInputPlace1">States</label>
-            <select
-              name=""
-              id="inputState"
-              class="form-control col-12 p-2"
-              style="border-radius: 4px"
-            >
-              <option value="">Select State</option>
-            </select>
-          </div>
+<body class="montserrat-400">
+  <div class="container form_container my-0 my-md-4">
+    <p id="errorMessage" style="display: none; color: red; font-weight: 600">
+      Please Enter the Details
+    </p>
+    <div class="container-fluid form-1">
+      <div class="row">
+        <div class="form-group col-12">
+          <!-- <label for="exampleInputName1">Name</label> -->
+          <input type="text" class="form-control" id="inputFirstName" aria-describedby="emailHelp" placeholder="Name"
+            required />
         </div>
-      </div>
-
-      <div class="container-fluid form-2">
-        <div class="row">
-          <div class="form-group col-12">
-            <label for="exampleInputPlace1">Pos No</label>
-            <input type="number" id="inputPosNo" class="form-control"  required/>
-          </div>
-          <div class="form-group col-12">
-            <label for="exampleInputPlace1">Purchase amount</label>
-            <input
-              type="number"
-              id="inputPurchaseAmount"
-              class="form-control"
-              required
-            />
-          </div>
+        <div class="form-group col-12">
+          <!-- <label for="exampleInputEmail1">Email Address</label> -->
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+            placeholder="Email address" required />
         </div>
-      </div>
+        <div class="form-group col-12">
+          <!-- <label for="exampleInputPhone1">Phone Number</label> -->
+          <input type="phone" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required />
+        </div>
+        <div class="form-group col-12">
+          <!-- <label for="exampleInputPlace1">place</label> -->
 
-      <div class="container-fluid">
-        <div class="row">
-          <div
-            class="col-12"
-            style="display: flex; align-items: center; justify-content: center"
-          >
-           
-            <a style="--clr: #7808d0" class="button mt-4"  type="submit" id="saveChangesBtn">
-              <span class="button__icon-wrapper">
-                  <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
-                      <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
-                  </svg>
-                  
-                  <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
-                      <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
-                  </svg>
-              </span>
-              <span class="btn-text">
-                Submit
-              </span>
-              
-          </a>
-          </div>
+          <input type="text" class="form-control" id="inputPlace" required placeholder="Place" />
+        </div>
+        <div class="form-group col-12">
+          <label for="exampleInputPlace1">Birthday</label>
+
+          <input type="date" class="form-control" id="inputBirthday" required />
+        </div>
+        <div class="form-group col-12">
+          <label for="exampleInputPlace1">Emirates</label>
+          <select name="" id="inputEmirates" class="form-control col-12 p-2" style="border-radius: 4px">
+            <option value="Select Emirates">Select Emirates</option>
+            <option value="Abu Dhabi">Abu Dhabi</option>
+            <option value="Sharjah">Sharjah</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Ajman">Ajman</option>
+            <option value="Raz al Khaima">Raz al Khaima</option>
+            <option value="Umm al quain">Umm al quain</option>
+            <option value="Fujairah">Fujairah</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <label for="exampleInputPlace1">Nationality</label>
+          <input type="text" class="form-control" id="inputNationality" required />
+        </div>
+        <div class="form-group col-12">
+          <label for="exampleInputPlace1">States</label>
+          <input type="text" class="form-control" id="inputState" required />
         </div>
       </div>
     </div>
-  </body>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
-  <script type="module" src="../config/db.js"></script>
-  <script type="module" src="../js/form.js"></script>
+
+    <div class="container-fluid form-2">
+      <div class="row">
+        <div class="form-group col-12">
+          <label for="exampleInputPlace1">Pos No</label>
+          <input type="number" id="inputPosNo" class="form-control" required />
+        </div>
+        <div class="form-group col-12">
+          <label for="exampleInputPlace1">Purchase amount</label>
+          <input type="number" id="inputPurchaseAmount" class="form-control" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12" style="display: flex; align-items: center; justify-content: center">
+
+          <a style="--clr: #7808d0" class="button mt-4" type="submit" id="saveChangesBtn">
+            <span class="button__icon-wrapper">
+              <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 14 15">
+                <path fill="currentColor"
+                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z">
+                </path>
+              </svg>
+
+              <svg class="button__icon-svg  button__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10"
+                fill="none" viewBox="0 0 14 15">
+                <path fill="currentColor"
+                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z">
+                </path>
+              </svg>
+            </span>
+            <span class="btn-text" id="saveChangesBtn">
+              Submit
+            </span>
+
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
+<script type="module" src="../config/db.js"></script>
+<script type="module" src="../js/form.js"></script>
+
 </html>
