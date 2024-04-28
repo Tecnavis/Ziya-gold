@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function saveChanges() {
-    console.log('666');
     const firstName = document.getElementById('inputFirstName').value.trim();
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
