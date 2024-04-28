@@ -10,6 +10,7 @@ import {
     orderBy
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { app } from '../config/db.js';
+import { userID } from '../globals/globals.js';
 
 let logoURL;
 
@@ -21,7 +22,7 @@ const firestore = getFirestore(app);
 
 
 async function displayDataInTable() {
-    const uid = 'pCI9mcdlIRTcPaMQm9DnZYsDLA83';
+    const uid = userID;
 
     if (!uid) {
         console.error('User not authenticated');

@@ -5,6 +5,8 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { app } from '../config/db.js';
+import { userID } from '../globals/globals.js';
+
 
 const firestore = getFirestore(app);
 const timestamp = serverTimestamp();
@@ -29,7 +31,7 @@ async function saveChanges() {
     const posNo = document.getElementById('inputPosNo').value.trim();
     const purchaseAmount = document.getElementById('inputPurchaseAmount').value.trim();
 
-    const uid = 'pCI9mcdlIRTcPaMQm9DnZYsDLA83';
+    const uid = userID;
 
     if (!uid) {
         console.error('User not authenticated');

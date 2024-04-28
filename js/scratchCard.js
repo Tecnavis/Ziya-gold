@@ -12,7 +12,7 @@ import {
     where
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { app } from '../config/db.js';
-import { logoURL } from './index.js'
+import { userID } from '../globals/globals.js';
 
 const firestore = getFirestore(app);
 const timestamp = serverTimestamp()
@@ -22,7 +22,7 @@ let winnerID, dateTime, prize;
 
 // Function to retrieve data from Firebase and initialize scratch card
 async function retrieveDataAndInitializeScratchCard() {
-    const uid = 'pCI9mcdlIRTcPaMQm9DnZYsDLA83';
+    const uid = userID;
 
     if (!uid) {
         console.error('User not authenticated');
@@ -90,7 +90,7 @@ function initializeScratchCard(cardData) {
 }
 
 function updateCount(cardData) {
-    const uid = 'pCI9mcdlIRTcPaMQm9DnZYsDLA83';
+    const uid = userID;
 
     // Reference to the "prizeList" collection
     const cardRef = collection(firestore, `users/${uid}/prizeList`);
