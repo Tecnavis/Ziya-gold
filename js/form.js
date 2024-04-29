@@ -2,15 +2,12 @@ import {
     getFirestore,
     collection,
     addDoc,
-    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { app } from '../config/db.js';
 import { userID } from '../globals/globals.js';
 
 
 const firestore = getFirestore(app);
-const timestamp = serverTimestamp();
-
 document.addEventListener("DOMContentLoaded", function () {
     const saveChangesBtn = document.getElementById('saveChangesBtn');
 
@@ -19,7 +16,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function formatAMPM(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Handle midnight
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    let strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+    return strTime;
+}
+
+function formatDate(date) {
+    let month = date.getMonth() + 1; // Month is zero based
+    let day = date.getDate();
+    let year = date.getFullYear();
+    return month + '/' + day + '/' + year;
+}
+
+function serverTimestamp() {
+    let date = new Date();
+    let formattedDate = formatDate(date);
+    let formattedTime = formatAMPM(date);
+    return { date: formattedDate, time: formattedTime };
+}
+
+const timestamp = serverTimestamp();
+console.log(timestamp); // Output example: "4/29/2024 12:05:35 PM"
+
+
 async function saveChanges() {
+    const { date, time } = serverTimestamp()
+
     const firstName = document.getElementById('inputFirstName').value.trim();
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
@@ -51,8 +81,10 @@ async function saveChanges() {
             state: state,
             posNo: posNo,
             purchaseAmount: purchaseAmount,
-            timestamp: timestamp,
+            date: date,
+            time: time,
         };
+
 
         const userDocRef = collection(firestore, `users/${uid}/table`);
 
