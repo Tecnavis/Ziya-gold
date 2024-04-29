@@ -25,7 +25,7 @@ async function displayDataInTable() {
     const uid = userID;
 
     if (!uid) {
-        console.error('User not authenticated');
+        // console.error('User not authenticated');
         return;
     }
 
@@ -46,7 +46,7 @@ async function displayDataInTable() {
             document.getElementById('displayCity').textContent = data.city
         });
     } catch (error) {
-        console.error('Error displaying data in table:', error);
+        // console.error('Error displaying data in table:', error);
     }
 }
 

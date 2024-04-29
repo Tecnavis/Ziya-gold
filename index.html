@@ -1,250 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scratch Card</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <style>
-    /* -----------------font_style */
-    .montserrat-400 {
-      font-family: "Montserrat", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-    }
-    .montserrat-600 {
-      font-family: "Montserrat", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 600;
-      font-style: normal;
-    }
-    /* -----------------font_style */
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-image: url(./Images//smooth-golden-textured-material.jpg);
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: grid;
-      place-items: center;
-    }
-    .profile {
-      max-width: 600px;
-      margin: 50px auto;
-      background-image: url(./Images//ziya\ card\ background.jpg);
-      background-size: cover;
-      background-position: center;
-      border-radius: 32px;
-      
-    }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scratch Card</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+</head>
+<style>
+  /* -----------------font_style */
+  .montserrat-400 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
 
-    .profile img {
-      width: 35%;
-      height: auto;
-      /* border-radius: 50%; */
-      margin-bottom: 20px;
-    }
+  .montserrat-600 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
 
-    .profile h1 {
-      font-size: 24px;
-      margin: 0;
-    }
+  /* -----------------font_style */
 
-    .profile p {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(./Images/3335639.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
 
-    .enroll_btn {
-      --primary-color: 	#d8b800;
-      --secondary-color: #fff;
-      --hover-color: #111;
-      --arrow-width: 10px;
-      --arrow-stroke: 2px;
-      box-sizing: border-box;
-      border: 0;
-      border-radius: 32px;
-      color: var(--secondary-color);
-      padding: 1em 1.8em;
-      background: var(--primary-color);
-      display: flex;
-      transition: 0.2s background;
-      align-items: center;
-      gap: 0.6em;
-      box-shadow: -8px 8px 12px 3px rgb(0 0 0 / 45%); 
-      font-weight: bold;
-    }
+  .profile {
+    max-width: 600px;
+    margin: 50px auto;
+    background-image: url(./Images//ziya\ card\ background.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 32px;
 
-    .enroll_btn .arrow-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  }
 
-    .enroll_btn .arrow {
-      margin-top: 1px;
-      width: var(--arrow-width);
-      background: var(--primary-color);
-      height: var(--arrow-stroke);
-      position: relative;
-      transition: 0.2s;
-    }
+  .profile img {
+    width: 35%;
+    height: auto;
+    /* border-radius: 50%; */
+    margin-bottom: 20px;
+  }
 
-    .enroll_btn .arrow::before {
-      content: "";
-      box-sizing: border-box;
-      position: absolute;
-      border: solid var(--secondary-color);
-      border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-      display: inline-block;
-      top: -3px;
-      right: 3px;
-      transition: 0.2s;
-      padding: 3px;
-      transform: rotate(-45deg);
-    }
+  .profile h1 {
+    font-size: 24px;
+    margin: 0;
+  }
 
-    .enroll_btn:hover {
-      background-color: var(--hover-color);
-    }
+  .profile p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 
-    .enroll_btn:hover .arrow {
-      background: var(--secondary-color);
-    }
+  .enroll_btn {
+    --primary-color: #d8b800;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 32px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    box-shadow: -8px 8px 12px 3px rgb(0 0 0 / 45%);
+    font-weight: bold;
+  }
 
-    .enroll_btn:hover .arrow:before {
-      right: 0;
-    }
-    .icon_container{
-      height: 50vh;
-      width: 6%;
-      position: fixed;
-      right:7%;
-      background-image: url(./Images//ziya\ card\ background.jpg);
-      background-size: cover;
-      background-position: center;
-      border-radius: 32px;
-      display: block;
-      align-items: center;
-      justify-content: center;
-    }
-    .icon-section{
-      width: 100%;
-      height: 33.3333%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Media Query for smaller devices */
-    @media only screen and (max-width: 992px) {
-      .icon_container{
+  .enroll_btn .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .enroll_btn .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+
+  .enroll_btn .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+
+  .enroll_btn:hover {
+    background-color: var(--hover-color);
+  }
+
+  .enroll_btn:hover .arrow {
+    background: var(--secondary-color);
+  }
+
+  .enroll_btn:hover .arrow:before {
+    right: 0;
+  }
+
+  .icon_container {
+    height: 50vh;
+    width: 6%;
+    position: fixed;
+    right: 7%;
+    background-image: url(./Images//ziya\ card\ background.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 32px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-section {
+    width: 100%;
+    height: 33.3333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Media Query for smaller devices */
+  @media only screen and (max-width: 992px) {
+    .icon_container {
       height: 8vh;
       width: 60%;
       position: unset;
       display: flex;
     }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .profile {
+      padding: 10px;
     }
-    @media only screen and (max-width: 600px) {
-      .profile {
-        padding: 10px;
-      }
+  }
+
+  @media only screen and (max-width: 576px) {
+    .profile {
+      border-radius: 0;
     }
-    @media only screen and (max-width: 576px) {
-      .profile {
-        border-radius: 0;
-      }
-      .icon_container{
+
+    .icon_container {
       width: 80%;
     }
-    }
-  </style>
+  }
+</style>
 
-  <body class="montserrat-400">
-    <div
-      class="profile py-4 bg-white text-dark my-4"
-      style="
+<body class="montserrat-400">
+  <div class="profile py-4 bg-white text-dark my-4" style="
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         box-shadow: 0px 0px 50px 28px rgb(0 0 0 / 45%); 
         
-      "
-    >
-      <!-- <img id="displayImage"  style="width: 100%" />
+      ">
+    <!-- <img id="displayImage"  style="width: 100%" />
       <h1 class="montserrat-600" id="displayName"></h1>
       <p id="displayEmail"></p>
       <p id="displayNumber"></p>
       <p id="displayCity"></p> -->
 
-      <img src="./Images/1714111576286.png"  alt="">
-      <h1 class="montserrat-600">ZIYA</h1>
-      <P>GOLD AND DIAMONDS</P>
-      <br>
-      <p>example@info.com</p>
-      <p>+971 56 567 345</p>
-      <p>UAE</p>
+    <img src="./Images/1714111576286.png" alt="">
+    <h1 class="montserrat-600">ZIYA</h1>
+    <P>GOLD AND DIAMONDS</P>
+    <br>
+    <p>example@info.com</p>
+    <p>Karama : +971 56 567 345</p>
+    <p>Dierra-Gold Souk : +971 56 567 345</p>
+    <p>UAE</p>
 
-      <a href="./pages/form.html" style="text-decoration: none">
-        <button class="enroll_btn">
-          Enroll Now
-          <div class="arrow-wrapper">
-            <div class="arrow"></div>
-          </div>
-        </button>
+    <a href="./pages/form.html" style="text-decoration: none">
+      <button class="enroll_btn">
+        Enroll Now
+        <div class="arrow-wrapper">
+          <div class="arrow"></div>
+        </div>
+      </button>
+    </a>
+  </div>
+  <div class="icon_container p-2">
+    <div class="icon-section">
+      <a href="https://www.instagram.com/ziyagold_?igsh=aW8yd3BydmtmMjBz">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+          <path fill="black"
+            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+        </svg>
       </a>
     </div>
-    <div class="icon_container p-2">
-      <div class="icon-section">
-        <a href="https://www.instagram.com/ziyagold_?igsh=aW8yd3BydmtmMjBz">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="black" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"/></svg>
+    <div class="icon-section">
+      <a href="https://ziyagoldanddiamonds.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+          <path fill="black"
+            d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2" />
+        </svg>
       </a>
-      </div>
-      <div class="icon-section">
-        <a href="https://ziyagoldanddiamonds.com">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="black" d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
-      </a>
-      </div>
-      <div class="icon-section">
-        <a href="tel:+971 4 261 1931, +971 4 328 0466">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16"><path fill="black" d="m15.88 3.86l-.61-1.31a1.214 1.214 0 0 0-.792-.658c-1.938-.528-4.161-.851-6.453-.891a27.46 27.46 0 0 0-6.687.934c-.165.048-.453.29-.605.609L.12 3.861a1.195 1.195 0 0 0-.12.52v.87l-.001.041c0 .392.318.71.71.71l.033-.001H3.26a.76.76 0 0 0 .742-.76L4 5.188v-.85a.65.65 0 0 1 .298-.546a6.913 6.913 0 0 1 3.724-.791a6.965 6.965 0 0 1 3.717.788c.143.099.262.3.262.529v.872a.76.76 0 0 0 .739.81h2.521l.031.001a.71.71 0 0 0 .71-.71l-.001-.043V4.38a1.208 1.208 0 0 0-.123-.527z"/><path fill="black" d="M12 8.3a4.73 4.73 0 0 1-1.001-2.92L11 5.296V5h-1v1H6V5H5v.33l.001.08a4.74 4.74 0 0 1-1.009 2.93L1 12v3h14v-3zM8 13a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/><path fill="black" d="M10 10a2 2 0 1 1-3.999.001A2 2 0 0 1 10 10"/></svg>
-      </a>
-      </div>
     </div>
-  </body>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
-  <script type="module" src="./config/db.js"></script>
-  <script type="module" src="./js/index.js"></script>
+    <div class="icon-section">
+      <a href="tel:+971 4 261 1931, +971 4 328 0466">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+          <path fill="black"
+            d="m15.88 3.86l-.61-1.31a1.214 1.214 0 0 0-.792-.658c-1.938-.528-4.161-.851-6.453-.891a27.46 27.46 0 0 0-6.687.934c-.165.048-.453.29-.605.609L.12 3.861a1.195 1.195 0 0 0-.12.52v.87l-.001.041c0 .392.318.71.71.71l.033-.001H3.26a.76.76 0 0 0 .742-.76L4 5.188v-.85a.65.65 0 0 1 .298-.546a6.913 6.913 0 0 1 3.724-.791a6.965 6.965 0 0 1 3.717.788c.143.099.262.3.262.529v.872a.76.76 0 0 0 .739.81h2.521l.031.001a.71.71 0 0 0 .71-.71l-.001-.043V4.38a1.208 1.208 0 0 0-.123-.527z" />
+          <path fill="black"
+            d="M12 8.3a4.73 4.73 0 0 1-1.001-2.92L11 5.296V5h-1v1H6V5H5v.33l.001.08a4.74 4.74 0 0 1-1.009 2.93L1 12v3h14v-3zM8 13a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
+          <path fill="black" d="M10 10a2 2 0 1 1-3.999.001A2 2 0 0 1 10 10" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
+<script type="module" src="./config/db.js"></script>
+<script type="module" src="./js/index.js"></script>
 
-  <!-- bootstrap--- -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-    crossorigin="anonymous"
-  ></script>
-  <!-- bootstrap--- -->
+<!-- bootstrap--- -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+  integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<!-- bootstrap--- -->
+
 </html>

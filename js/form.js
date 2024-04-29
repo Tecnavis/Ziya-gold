@@ -44,11 +44,12 @@ function serverTimestamp() {
 }
 
 const timestamp = serverTimestamp();
-console.log(timestamp); // Output example: "4/29/2024 12:05:35 PM"
+// console.log(timestamp); // Output example: "4/29/2024 12:05:35 PM"
 
 
 async function saveChanges() {
     const { date, time } = serverTimestamp()
+    const uid = userID;
 
     const firstName = document.getElementById('inputFirstName').value.trim();
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
@@ -60,8 +61,6 @@ async function saveChanges() {
     const state = document.getElementById('inputState').value.trim();
     const posNo = document.getElementById('inputPosNo').value.trim();
     const purchaseAmount = document.getElementById('inputPurchaseAmount').value.trim();
-
-    const uid = userID;
 
     if (!uid) {
         console.error('User not authenticated');
@@ -91,10 +90,11 @@ async function saveChanges() {
         try {
             const docRef = await addDoc(userDocRef, dataToSave);
             localStorage.setItem('num', phoneNumber);
-            console.log('Data successfully added to Firestore');
+            localStorage.setItem('purchase', purchaseAmount);
+            // console.log('Data successfully added to Firestore');
             window.location.href = '../pages/scratchCard.html';
         } catch (error) {
-            console.error('Error adding data to Firestore: ', error);
+            // console.error('Error adding data to Firestore: ', error);
             // Show error message to user
             showError('Error adding data to Firestore. Please try again later.');
         }

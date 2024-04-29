@@ -19,13 +19,16 @@ const timestamp = serverTimestamp()
 
 let winnerID, dateTime, prize;
 
+const cardsData = [];
 
 // Function to retrieve data from Firebase and initialize scratch card
 async function retrieveDataAndInitializeScratchCard() {
     const uid = userID;
 
+    const purchaseAmount = localStorage.getItem('purchase');
+
     if (!uid) {
-        console.error('User not authenticated');
+        // console.error('User not authenticated');
         return;
     }
 
@@ -33,7 +36,6 @@ async function retrieveDataAndInitializeScratchCard() {
 
     try {
         const querySnapshot = await getDocs(query(userDocRef, orderBy('timestamp', 'asc')));
-        const cardsData = [];
 
         querySnapshot.forEach((doc) => {
             const data = doc.data();
@@ -41,52 +43,85 @@ async function retrieveDataAndInitializeScratchCard() {
             cardsData.push(data);
         });
 
-        // Sort cardsData array based on count in descending order
-        cardsData.sort((a, b) => b.count - a.count);
-
-        // Check if there are available cards
-        if (cardsData.length > 0) {
-            const card = cardsData[0]; // Select the first card (highest count)
-
-            // Check if counts are available
-            if (card.count > 0) {
-                initializeScratchCard(card);
-            } else {
-                // If counts are not available, handle it accordingly (e.g., show a message).
-                console.log("No counts available for this card.");
-            }
+        if (purchaseAmount > 20000) {
+            // set card of prizeN 500AED, 250AED, 200AED, 150AED, 100AED, 50AED
+            const prizeOptions = ["500AED", "250AED", "200AED", "150AED", "100AED", "50AED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
+        } else if (purchaseAmount > 15000 && purchaseAmount < 20000) {
+            // set card of prizeN 250AED, 200AED, 150AED, 100AED, 50AED
+            const prizeOptions = ["250AED", "200AED", "150AED", "100AED", "50AED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
+        } else if (purchaseAmount > 8000 && purchaseAmount < 15000) {
+            // set card of prizeN 200AED, 150AED, 100AED, 50AED
+            const prizeOptions = ["200AED", "150AED", "100AED", "50AED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
+        } else if (purchaseAmount > 6000 && purchaseAmount < 8000) {
+            // set card of prizeN 150AED, 100AED, 50AED
+            const prizeOptions = ["150AED", "100AED", "50AED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
+        } else if (purchaseAmount > 4000 && purchaseAmount < 6000) {
+            // set card of prizeN 100AED, 50AED
+            const prizeOptions = ["100AED", "50AED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
+        } else if (purchaseAmount > 2000 && purchaseAmount < 4000) {
+            // set card of prizeN 50AED
+            const prizeOptions = ["50AED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
         } else {
-            console.log("No scratch cards available for this user.");
+            // set card of prizeN 5PED, 70PED
+            const prizeOptions = ["5PED", "70PED"];
+            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
+            const selectedPrize = prizeOptions[randomIndex];
+            initializeScratchCard(selectedPrize);
         }
     } catch (error) {
-        console.error('Error retrieving data from Firebase:', error);
+        // console.error('Error retrieving data from Firebase:', error);
     }
 }
 
 
 // Function to initialize scratch card with data
-function initializeScratchCard(cardData) {
+function initializeScratchCard(data) {
+    // console.log(data);
     // Define a variable to store a reference to the timeout
     let scratchMoveTimeout;
 
-    $("#card").wScratchPad({
-        size: 100,
-        bg: cardData.photoUrl,
-        fg: "../Images/8802794.png",
-        cursor: "pointer",
-        scratchMove: function (e, percent) {
-            // Clear the previous timeout
-            clearTimeout(scratchMoveTimeout);
+    cardsData.forEach((cardData) => {
+        // console.log(cardData.prizeName);
+        if (cardData.prizeName === data) {
+            $("#card").wScratchPad({
+                size: 100,
+                bg: cardData.photoUrl,
+                fg: "../Images/8802794.png",
+                cursor: "pointer",
+                scratchMove: function (e, percent) {
+                    // Clear the previous timeout
+                    clearTimeout(scratchMoveTimeout);
 
-            // Set a new timeout to call updateCount after a delay of 500 milliseconds
-            scratchMoveTimeout = setTimeout(() => {
-                // If scratch reaches a certain threshold (e.g., 50%), update count in database
-                if (percent > 50) {
-                    updateCount(cardData);
+                    // Set a new timeout to call updateCount after a delay of 500 milliseconds
+                    scratchMoveTimeout = setTimeout(() => {
+                        // If scratch reaches a certain threshold (e.g., 50%), update count in database
+                        if (percent > 50) {
+                            updateCount(cardData);
+                        }
+                    }, 1000); // Adjust the delay as needed
                 }
-            }, 1000); // Adjust the delay as needed
+            });
         }
-    });
+    })
+
 }
 
 function updateCount(cardData) {
@@ -101,11 +136,11 @@ function updateCount(cardData) {
     getDocs(querys)
         .then(async (querySnapshot) => {
             querySnapshot.forEach(async (doc) => {
-                console.log(doc.id);
+                // console.log(doc.id);
                 await updateDoc(doc.ref, {
                     count: cardData.count - 1 // Decrease count by 1
                 }).then(async () => {
-                    console.log("Count updated successfully.");
+                    // console.log("Count updated successfully.");
 
                     // Get the phone number from localStorage
                     var number = localStorage.getItem('num');
@@ -132,7 +167,7 @@ function updateCount(cardData) {
                             winID: winID,
                             prizeID: cardData.prizeID // newValue is the value you want to assign to the new field
                         }).then(() => {
-                            console.log("New field added successfully to the table document.");
+                            // console.log("New field added successfully to the table document.");
                             document.getElementById('successMessage').style.display = 'block'
                             document.getElementById('winID').textContent = winID;
 
@@ -151,16 +186,16 @@ function updateCount(cardData) {
                             // Auto Download Image
                             autoDownload();
                         }).catch((error) => {
-                            console.error("Error adding new field to the table document: ", error);
+                            // console.error("Error adding new field to the table document: ", error);
                         });
                     });
                 }).catch((error) => {
-                    console.error("Error updating count: ", error);
+                    // console.error("Error updating count: ", error);
                 });
             });
         })
         .catch((error) => {
-            console.error("Error updating count: ", error);
+            // console.error("Error updating count: ", error);
         });
 }
 
@@ -204,7 +239,7 @@ function autoDownload() {
 
     // Load your main image
     const img = new Image();
-    img.src = '../congratulations-ziya-gold.jpg'; // Replace with your image path 
+    img.src = '../congratulations-ziya.jpg'; // Replace with your image path 
     img.onload = function () {
         // Draw your main image on canvas
         ctx.drawImage(img, 0, 0);
@@ -235,7 +270,6 @@ function autoDownload() {
 
         const num = localStorage.getItem('num');
         if (num) {
-            localStorage.removeItem('num');
             // Redirect to index page
             window.location.href = '../index.html'
         }
