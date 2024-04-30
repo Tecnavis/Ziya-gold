@@ -239,13 +239,13 @@
         <div class="form-group col-12">
           <label for="exampleInputPlace1">Emirates</label>
           <select name="" id="inputEmirates" class="form-control col-12 p-2" style="border-radius: 4px">
-            <option value="Select Emirates">Select Emirates</option>
+            <option value="" disabled selected>Select Emirates</option>
             <option value="Abu Dhabi">Abu Dhabi</option>
             <option value="Sharjah">Sharjah</option>
             <option value="Dubai">Dubai</option>
             <option value="Ajman">Ajman</option>
-            <option value="Raz al Khaima">Raz al Khaima</option>
-            <option value="Umm al quain">Umm al quain</option>
+            <option value="Ras al Khaimah">Ras al Khaimah</option>
+            <option value="Umm al Quwain">Umm al Quwain</option>
             <option value="Fujairah">Fujairah</option>
           </select>
         </div>
@@ -305,7 +305,7 @@
 </body>
 <script>
   var number = localStorage.getItem('num');
-  if(number){
+  if (number) {
     window.location.href = '../index.html'
   }
 </script>
