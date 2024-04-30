@@ -185,7 +185,7 @@ function updateCount(cardData) {
                             dateTime = dateString + '  ' + timeString;
 
                             // Auto Download Image
-                            autoDownload();
+                            autoDownload()
                         }).catch((error) => {
                             // console.error("Error adding new field to the table document: ", error);
                         });
@@ -229,14 +229,32 @@ async function generateUniqueRandomId() {
     return winID;
 }
 
-// Usage inside your updateCount function
-const winID = await generateUniqueRandomId();
-
-
 
 function formatTimePart(part) {
     return part < 10 ? '0' + part : part;
 }
+
+
+// // Function to share image to WhatsApp
+// function shareToWhatsApp(dataURL) {
+//     // Create a WhatsApp share URL with the image data
+//     const whatsappURL = `whatsapp://send?text=Check out this prize details&image=${encodeURIComponent(dataURL)}`;
+
+//     // Open the WhatsApp share URL
+//     window.location.href = whatsappURL;
+// }
+
+// // Function to create and display the share to WhatsApp button
+// function displayShareButton(dataURL) {
+//     console.log('555');
+//     const shareToWhatsAppButton = document.getElementById('shareToWhatsAppButton');
+//     shareToWhatsAppButton.style.display = 'block';
+//     shareToWhatsAppButton.addEventListener("click", () => {
+//         // Share the image data URL to WhatsApp
+//         shareToWhatsApp(dataURL);
+//     });
+//     document.body.appendChild(shareToWhatsAppButton);
+// }
 
 // Function to handle automatic download
 function autoDownload() {
@@ -258,7 +276,7 @@ function autoDownload() {
         // Add text
         ctx.font = '100px Arial';
         ctx.fillStyle = 'black';
-        ctx.fillText(prize, 900, 1550); // Adjust position as needed
+        ctx.fillText(prize, 880, 1550); // Adjust position as needed
         ctx.fillText(winnerID, 900, 1700);
         ctx.fillText(dateTime, 600, 1850);
 
@@ -279,13 +297,19 @@ function autoDownload() {
         // Remove canvas from document body
         document.body.removeChild(canvas);
 
-        const num = localStorage.getItem('num');
-        if (num) {
-            localStorage.removeItem('num');
-            // Redirect to index page
-            window.location.href = '../index.html'
-        }
+        resetAndRedirect()
     };
 }
+
+
+function resetAndRedirect() {
+    const num = localStorage.getItem('num');
+    if (num) {
+        localStorage.removeItem('num');
+        // Redirect to index page
+        window.location.href = '../index.html'
+    }
+}
+
 
 
