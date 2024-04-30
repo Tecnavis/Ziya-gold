@@ -21,6 +21,30 @@
       background-position: center;
     }
 
+    .enroll_btn {
+      --primary-color: #d8b800;
+      --secondary-color: #fff;
+      --hover-color: #111;
+      --arrow-width: 10px;
+      --arrow-stroke: 2px;
+      box-sizing: border-box;
+      border: 0;
+      border-radius: 32px;
+      color: var(--secondary-color);
+      padding: 1em 1.8em;
+      background: var(--primary-color);
+      display: flex;
+      transition: 0.2s background;
+      align-items: center;
+      gap: 0.6em;
+      box-shadow: -8px 8px 12px 3px rgb(0 0 0 / 45%);
+      font-weight: bold;
+    }
+
+    .enroll_btn:hover {
+      background-color: var(--hover-color);
+    }
+
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
       .container div:first-child {
@@ -46,7 +70,7 @@
       </h2>
       <h3 style="color: white;" id="winID"></h3>
       <!-- Add a button for sharing to WhatsApp -->
-      <button id="downloadImageBtn" style="display: none;">Download Image</button>
+      <button id="downloadImageBtn" style="display: none;" class="enroll_btn">Download Image</button>
     </div>
   </div>
 </body>

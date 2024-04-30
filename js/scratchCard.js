@@ -43,6 +43,7 @@ async function retrieveDataAndInitializeScratchCard() {
             cardsData.push(data);
         });
 
+        
         if (purchaseAmount > 20000) {
             // set card of prizeN 500AED, 250AED, 200AED, 150AED, 100AED, 50AED
             const prizeOptions = ["500AED", "250AED", "200AED", "150AED", "100AED", "50AED"];
@@ -81,7 +82,7 @@ async function retrieveDataAndInitializeScratchCard() {
             initializeScratchCard(selectedPrize);
         } else {
             // set card of prizeN 5PED, 70PED
-            const prizeOptions = ["5PED", "70PED"];
+            const prizeOptions = ["5% off in mc", "70 % off dmd"];
             const randomIndex = Math.floor(Math.random() * prizeOptions.length);
             const selectedPrize = prizeOptions[randomIndex];
             initializeScratchCard(selectedPrize);
@@ -184,8 +185,7 @@ function updateCount(cardData) {
                             prize = cardData.prizeName;
                             dateTime = dateString + '  ' + timeString;
 
-                            // Auto Download Image
-                            autoDownload()
+                            document.getElementById('downloadImageBtn').style.display = 'block';
                         }).catch((error) => {
                             // console.error("Error adding new field to the table document: ", error);
                         });
@@ -234,15 +234,6 @@ function formatTimePart(part) {
     return part < 10 ? '0' + part : part;
 }
 
-
-// Function to handle download initiation
-function initiateDownload(dataURL) {
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'prize-details.png'; // Filename
-    link.click();
-}
-
 // Function to handle automatic download
 function autoDownload() {
     // Create a canvas element to draw the image, logo, and text
@@ -264,7 +255,7 @@ function autoDownload() {
         // Add text
         ctx.font = '100px Arial';
         ctx.fillStyle = 'black';
-        ctx.fillText(prize, 880, 1550); // Adjust position as needed
+        ctx.fillText(prize, 850, 1550); // Adjust position as needed
         ctx.fillText(winnerID, 900, 1700);
         ctx.fillText(dateTime, 600, 1850);
 
@@ -273,17 +264,23 @@ function autoDownload() {
 
         // Convert canvas to data URL
         const dataURL = canvas.toDataURL("image/png");
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'prize-details.png'; // Filename
+
+        link.click();
 
         // Remove canvas from document body
         document.body.removeChild(canvas);
-
-        // Initiate download using the new function
-        initiateDownload(dataURL);
 
         // Call resetAndRedirect which will handle redirect now
         resetAndRedirect();
     };
 }
+
+
+// Initiate download using the new function
+document.getElementById('downloadImageBtn').addEventListener('click', autoDownload);
 
 function resetAndRedirect() {
     const num = localStorage.getItem('num');
@@ -297,8 +294,6 @@ function resetAndRedirect() {
     }
 }
 
-// // Assuming you have a button with id 'downloadImageBtn'
-// document.getElementById('downloadImageBtn').addEventListener('click', autoDownload);
 
 
 
