@@ -235,26 +235,13 @@ function formatTimePart(part) {
 }
 
 
-// // Function to share image to WhatsApp
-// function shareToWhatsApp(dataURL) {
-//     // Create a WhatsApp share URL with the image data
-//     const whatsappURL = `whatsapp://send?text=Check out this prize details&image=${encodeURIComponent(dataURL)}`;
-
-//     // Open the WhatsApp share URL
-//     window.location.href = whatsappURL;
-// }
-
-// // Function to create and display the share to WhatsApp button
-// function displayShareButton(dataURL) {
-//     console.log('555');
-//     const shareToWhatsAppButton = document.getElementById('shareToWhatsAppButton');
-//     shareToWhatsAppButton.style.display = 'block';
-//     shareToWhatsAppButton.addEventListener("click", () => {
-//         // Share the image data URL to WhatsApp
-//         shareToWhatsApp(dataURL);
-//     });
-//     document.body.appendChild(shareToWhatsAppButton);
-// }
+// Function to handle download initiation
+function initiateDownload(dataURL) {
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'prize-details.png'; // Filename
+    link.click();
+}
 
 // Function to handle automatic download
 function autoDownload() {
@@ -268,7 +255,8 @@ function autoDownload() {
 
     // Load your main image
     const img = new Image();
-    img.src = '../congratulations-ziya.jpg'; // Replace with your image path 
+    img.src = '../congratulations-ziya.jpg'; // Replace with your image path
+
     img.onload = function () {
         // Draw your main image on canvas
         ctx.drawImage(img, 0, 0);
@@ -280,36 +268,40 @@ function autoDownload() {
         ctx.fillText(winnerID, 900, 1700);
         ctx.fillText(dateTime, 600, 1850);
 
-        // Append canvas to document body
+        // Append canvas to document body (temporary for dataURL generation)
         document.body.appendChild(canvas);
 
         // Convert canvas to data URL
         const dataURL = canvas.toDataURL("image/png");
 
-        // Create a link element
-        const link = document.createElement('a');
-        link.href = dataURL;
-        link.download = 'prize-details.png'; // Filename
-
-        // Trigger click event on the link to download the image
-        link.click();
-
         // Remove canvas from document body
         document.body.removeChild(canvas);
 
-        resetAndRedirect()
+        // Initiate download using the new function
+        initiateDownload(dataURL);
+
+        // Call resetAndRedirect which will handle redirect now
+        resetAndRedirect();
     };
 }
-
 
 function resetAndRedirect() {
     const num = localStorage.getItem('num');
     if (num) {
         localStorage.removeItem('num');
-        // Redirect to index page
-        window.location.href = '../index.html'
+
+        // Redirect to index page after a slight delay
+        setTimeout(() => {
+            window.location.href = '../index.html';
+        }, 10000); // Adjust delay if needed
     }
 }
+
+// // Assuming you have a button with id 'downloadImageBtn'
+// document.getElementById('downloadImageBtn').addEventListener('click', autoDownload);
+
+
+
 
 
 
