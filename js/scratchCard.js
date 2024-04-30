@@ -281,6 +281,7 @@ function autoDownload() {
 
         const num = localStorage.getItem('num');
         if (num) {
+            localStorage.removeItem('num');
             // Redirect to index page
             window.location.href = '../index.html'
         }

@@ -1,80 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scratch Card</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://code.jquery.com/jquery-2.2.4.min.js"
-      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-      crossorigin="anonymous"
-    ></script>
-    <!-- <script src="./app.js" defer></script> -->
-    <script src="../wScratchpad.min.js"></script>
-    <style>
-      body{
-        background-image: url(../Images//smooth-golden-textured-material.jpg);
-        background-size: cover;
-        background-position: center;
-      }
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
-        .container div:first-child {
-          margin: 25px;
-        }
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="container" style="display: flex; flex-direction: column">
-      <div id="card"></div>
-      <div
-        style="
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scratch Card</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <!-- <script src="./app.js" defer></script> -->
+  <script src="../wScratchpad.min.js"></script>
+  <style>
+    body {
+      background-image: url(../Images//smooth-golden-textured-material.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      .container div:first-child {
+        margin: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container" style="display: flex; flex-direction: column">
+    <div id="card"></div>
+    <div style="
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           margin-top: 15px;
-        "
-      >
-        <h2 id="successMessage"  style="display: none; text-align: center; color: white;">
-          Congratulations <br />
-          You Won
-        </h2>
-        <h3 style="color: white;" id="winID"></h3>
-      </div>
+        ">
+      <h2 id="successMessage" style="display: none; text-align: center; color: white;">
+        Congratulations <br />
+        You Won
+      </h2>
+      <h3 style="color: white;" id="winID"></h3>
     </div>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-fireworks@3/tsparticles.preset.fireworks.bundle.min.js"></script>
-  <script>
-    //  setInterval(() => {
-    //   tsParticles.load({
-    //     id: "tsparticles",
-    //     options: {
-    //       preset: "fireworks",
-    //       background: {
-    //         color: "transparent"
-    //       },
-    //       fullScreen: {
-    //         enable: true,
-    //         zIndex: -1
-    //       }
-    //     },
-    //   });
-    //  }, 5000)
-  </script>
+  </div>
+</body>
+<script
+  src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-fireworks@3/tsparticles.preset.fireworks.bundle.min.js"></script>
+<script>
+  //  setInterval(() => {
+  //   tsParticles.load({
+  //     id: "tsparticles",
+  //     options: {
+  //       preset: "fireworks",
+  //       background: {
+  //         color: "transparent"
+  //       },
+  //       fullScreen: {
+  //         enable: true,
+  //         zIndex: -1
+  //       }
+  //     },
+  //   });
+  //  }, 5000)
+</script>
+<script>
+  const num = localStorage.getItem('num');
+  if (!num) {
+    window.location.href = '../index.html'
+  }
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
+<script type="module" src="../config/db.js"></script>
+<script type="module" src="../js/scratchCard.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
-  <script type="module" src="../config/db.js"></script>
-  <script type="module" src="../js/scratchCard.js"></script>
 </html>
