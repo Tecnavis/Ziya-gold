@@ -71,6 +71,13 @@
     //   });
     //  }, 5000)
   </script>
+  <script>
+    var number = localStorage.getItem('num');
+    if(number){
+      window.location.href = '../index.html'
+    }
+  </script>
+
   <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>
