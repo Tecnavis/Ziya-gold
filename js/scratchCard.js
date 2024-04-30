@@ -149,7 +149,8 @@ function updateCount(cardData) {
                         window.location.href = './form.html'
                     }
 
-                    const winID = generateCustomId(number);
+                    const winID = await generateUniqueRandomId();
+                    console.log(winID);
 
                     // Reference to the "table" collection
                     const tableRef = collection(firestore, `users/${uid}/table`);
@@ -165,7 +166,7 @@ function updateCount(cardData) {
                         await updateDoc(tableDoc.ref, {
                             // Add a new field to the document
                             winID: winID,
-                            prizeID: cardData.prizeID // newValue is the value you want to assign to the new field
+                            prizeName: cardData.prizeName // newValue is the value you want to assign to the new field
                         }).then(() => {
                             // console.log("New field added successfully to the table document.");
                             document.getElementById('successMessage').style.display = 'block'
@@ -190,7 +191,7 @@ function updateCount(cardData) {
                         });
                     });
                 }).catch((error) => {
-                    // console.error("Error updating count: ", error);
+                    console.error("Error updating count: ", error);
                 });
             });
         })
@@ -204,23 +205,33 @@ function updateCount(cardData) {
 // Call the function to retrieve data from Firebase and initialize scratch card
 retrieveDataAndInitializeScratchCard();
 
-function generateCustomId(num) {
-    // Convert the number to a string
-    const numString = num.toString();
+async function generateUniqueRandomId() {
+    const uid = userID;
+    let isUnique = false;
+    let winID;
 
-    // Get the current date and time in the format YYYYMMDDHHMMSS
-    const now = new Date();
-    const timestamp = [
-        now.getFullYear(),
-        ('0' + (now.getMonth() + 1)).slice(-2),
-        ('0' + now.getDate()).slice(-2),
-    ].join('');
+    // Reference to the "table" collection
+    const tableRef = collection(firestore, `users/${uid}/table`);
 
-    // Combine the number and timestamp to create the ID
-    const customId = numString + timestamp;
+    while (!isUnique) {
+        // Generate a random 5-digit number
+        const randomNumber = Math.floor(10000 + Math.random() * 90000);
+        winID = randomNumber.toString();
 
-    return customId;
+        // Check if the generated ID already exists in the collection
+        const querySnapshot = await getDocs(query(tableRef, where('winID', '==', winID)));
+
+        if (querySnapshot.empty) {
+            isUnique = true;
+        }
+    }
+
+    return winID;
 }
+
+// Usage inside your updateCount function
+const winID = await generateUniqueRandomId();
+
 
 
 function formatTimePart(part) {
@@ -247,8 +258,8 @@ function autoDownload() {
         // Add text
         ctx.font = '100px Arial';
         ctx.fillStyle = 'black';
-        ctx.fillText(prize, 800, 1550); // Adjust position as needed
-        ctx.fillText(winnerID, 500, 1700);
+        ctx.fillText(prize, 900, 1550); // Adjust position as needed
+        ctx.fillText(winnerID, 900, 1700);
         ctx.fillText(dateTime, 600, 1850);
 
         // Append canvas to document body

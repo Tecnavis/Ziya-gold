@@ -2,6 +2,7 @@ import {
     getFirestore,
     collection,
     addDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { app } from '../config/db.js';
 import { userID } from '../globals/globals.js';
@@ -36,7 +37,7 @@ function formatDate(date) {
     return month + '/' + day + '/' + year;
 }
 
-function serverTimestamp() {
+function timeStamp() {
     let date = new Date();
     let formattedDate = formatDate(date);
     let formattedTime = formatAMPM(date);
@@ -48,13 +49,13 @@ const timestamp = serverTimestamp();
 
 
 async function saveChanges() {
-    const { date, time } = serverTimestamp()
+    const { date, time } = timeStamp()
     const uid = userID;
 
     const firstName = document.getElementById('inputFirstName').value.trim();
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
-    const place = document.getElementById('inputPlace').value.trim();
+    // const place = document.getElementById('inputPlace').value.trim();
     const birthday = document.getElementById('inputBirthday').value.trim();
     const emirates = document.getElementById('inputEmirates').value.trim();
     const nationality = document.getElementById('inputNationality').value.trim();
@@ -68,12 +69,11 @@ async function saveChanges() {
     }
 
     // Validate inputs
-    if (validateInputs(firstName, phoneNumber, email, place, birthday, emirates, nationality, state, posNo, purchaseAmount)) {
+    if (validateInputs(firstName, phoneNumber, email, birthday, emirates, nationality, state, posNo, purchaseAmount)) {
         const dataToSave = {
             firstName: firstName,
             phoneNumber: phoneNumber,
             email: email,
-            place: place,
             birthday: birthday,
             emirates: emirates,
             nationality: nationality,
@@ -82,6 +82,7 @@ async function saveChanges() {
             purchaseAmount: purchaseAmount,
             date: date,
             time: time,
+            timestamp: timestamp,
         };
 
 
@@ -92,6 +93,15 @@ async function saveChanges() {
             localStorage.setItem('num', phoneNumber);
             localStorage.setItem('purchase', purchaseAmount);
             // console.log('Data successfully added to Firestore');
+            document.getElementById('inputFirstName').value = '';
+            document.getElementById('inputPhoneNumber').value = '';
+            document.getElementById('inputEmail').value = '';
+            document.getElementById('inputBirthday').value = '';
+            document.getElementById('inputEmirates').value = '';
+            document.getElementById('inputNationality').value = '';
+            document.getElementById('inputState').value = '';
+            document.getElementById('inputPosNo').value = '';
+            document.getElementById('inputPurchaseAmount').value = '';
             window.location.href = '../pages/scratchCard.html';
         } catch (error) {
             // console.error('Error adding data to Firestore: ', error);
@@ -101,8 +111,8 @@ async function saveChanges() {
     }
 }
 
-function validateInputs(firstName, phoneNumber, email, place, birthday, emirates, nationality, state, posNo, purchaseAmount) {
-    if (!firstName || !phoneNumber || !email || !place || !birthday || !emirates || !nationality || !state || !posNo || !purchaseAmount) {
+function validateInputs(firstName, phoneNumber, email, birthday, emirates, nationality, state, posNo, purchaseAmount) {
+    if (!firstName || !phoneNumber || !email || !birthday || !emirates || !nationality || !state || !posNo || !purchaseAmount) {
         showError('Please fill in all required fields.');
         return false;
     }
