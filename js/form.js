@@ -2,6 +2,9 @@ import {
     getFirestore,
     collection,
     addDoc,
+    getDocs,
+    query,
+    where,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { app } from '../config/db.js';
@@ -63,13 +66,12 @@ const timestamp = serverTimestamp();
 
 
 async function saveChanges() {
-    const { date, time } = timeStamp()
+    const { date, time } = timeStamp();
     const uid = userID;
 
     const firstName = document.getElementById('inputFirstName').value.trim();
     const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
-    // const place = document.getElementById('inputPlace').value.trim();
     const birthday = document.getElementById('inputBirthday').value.trim();
     const emirates = document.getElementById('inputEmirates').value.trim();
     const nationality = document.getElementById('inputNationality').value.trim();
@@ -84,6 +86,19 @@ async function saveChanges() {
 
     // Validate inputs
     if (validateInputs(firstName, phoneNumber, email, birthday, emirates, nationality, state, posNo, purchaseAmount)) {
+        const userDocRef = collection(firestore, `users/${uid}/table`);
+
+        // Check if posNo already exists
+        const querySnapshot = await getDocs(query(userDocRef, where('posNo', '==', posNo)));
+        if (!querySnapshot.empty) {
+            // If posNo already exists, show error message
+            // console.log('Position number already exists. Please choose another one.');
+            const posErrorElement = document.getElementById('posError');
+            posErrorElement.style.display = 'block';
+            posErrorElement.innerHTML = 'Pos Number Already Exists'
+            return; // Exit the function without saving
+        }
+
         const dataToSave = {
             firstName: firstName,
             phoneNumber: phoneNumber,
@@ -99,14 +114,10 @@ async function saveChanges() {
             timestamp: timestamp,
         };
 
-
-        const userDocRef = collection(firestore, `users/${uid}/table`);
-
         try {
             const docRef = await addDoc(userDocRef, dataToSave);
             localStorage.setItem('num', phoneNumber);
             localStorage.setItem('purchase', purchaseAmount);
-            // console.log('Data successfully added to Firestore');
             document.getElementById('inputFirstName').value = '';
             document.getElementById('inputPhoneNumber').value = '';
             document.getElementById('inputEmail').value = '';
@@ -118,12 +129,11 @@ async function saveChanges() {
             document.getElementById('inputPurchaseAmount').value = '';
             window.location.href = '../pages/scratchCard.html';
         } catch (error) {
-            // console.error('Error adding data to Firestore: ', error);
-            // Show error message to user
             showError('Error adding data to Firestore. Please try again later.');
         }
     }
 }
+
 
 function validateInputs(firstName, phoneNumber, email, birthday, emirates, nationality, state, posNo, purchaseAmount) {
     if (!firstName || !phoneNumber || !email || !birthday || !emirates || !nationality || !state || !posNo || !purchaseAmount) {

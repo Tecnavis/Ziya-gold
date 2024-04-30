@@ -21,20 +21,17 @@ let winnerID, dateTime, prize;
 
 const cardsData = [];
 
-// Function to retrieve data from Firebase and initialize scratch card
 async function retrieveDataAndInitializeScratchCard() {
     const uid = userID;
 
-    const purchaseAmount = localStorage.getItem('purchase');
-
     if (!uid) {
-        // console.error('User not authenticated');
+        // Handle unauthenticated user
         return;
     }
 
-    const userDocRef = collection(firestore, `users/${uid}/prizeList`);
-
     try {
+        const purchaseAmount = localStorage.getItem('purchase');
+        const userDocRef = collection(firestore, `users/${uid}/prizeList`);
         const querySnapshot = await getDocs(query(userDocRef, orderBy('timestamp', 'asc')));
 
         querySnapshot.forEach((doc) => {
@@ -43,59 +40,53 @@ async function retrieveDataAndInitializeScratchCard() {
             cardsData.push(data);
         });
 
-        
-        if (purchaseAmount > 20000) {
-            // set card of prizeN 500AED, 250AED, 200AED, 150AED, 100AED, 50AED
-            const prizeOptions = ["500AED", "250AED", "200AED", "150AED", "100AED", "50AED"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
-            initializeScratchCard(selectedPrize);
-        } else if (purchaseAmount > 15000 && purchaseAmount < 20000) {
-            // set card of prizeN 250AED, 200AED, 150AED, 100AED, 50AED
-            const prizeOptions = ["250AED", "200AED", "150AED", "100AED", "50AED"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
-            initializeScratchCard(selectedPrize);
-        } else if (purchaseAmount > 8000 && purchaseAmount < 15000) {
-            // set card of prizeN 200AED, 150AED, 100AED, 50AED
-            const prizeOptions = ["200AED", "150AED", "100AED", "50AED"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
-            initializeScratchCard(selectedPrize);
-        } else if (purchaseAmount > 6000 && purchaseAmount < 8000) {
-            // set card of prizeN 150AED, 100AED, 50AED
-            const prizeOptions = ["150AED", "100AED", "50AED"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
-            initializeScratchCard(selectedPrize);
-        } else if (purchaseAmount > 4000 && purchaseAmount < 6000) {
-            // set card of prizeN 100AED, 50AED
-            const prizeOptions = ["100AED", "50AED"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
-            initializeScratchCard(selectedPrize);
-        } else if (purchaseAmount > 2000 && purchaseAmount < 4000) {
-            // set card of prizeN 50AED
-            const prizeOptions = ["50AED"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
-            initializeScratchCard(selectedPrize);
-        } else {
-            // set card of prizeN 5PED, 70PED
-            const prizeOptions = ["5% off in mc", "70 % off dmd"];
-            const randomIndex = Math.floor(Math.random() * prizeOptions.length);
-            const selectedPrize = prizeOptions[randomIndex];
+        let selectedPrize = selectPrizeBasedOnPurchase(purchaseAmount, cardsData);
+
+        if (selectedPrize) {
             initializeScratchCard(selectedPrize);
         }
     } catch (error) {
-        // console.error('Error retrieving data from Firebase:', error);
+        console.error('Error retrieving data from Firebase:', error);
+        // Handle error (e.g., show error message to user)
     }
 }
+
+function selectPrizeBasedOnPurchase(purchaseAmount, cardsData) {
+    let selectedPrize;
+
+    if (purchaseAmount > 20000) {
+        selectedPrize = selectRandomAvailablePrize(["500AED", "250AED", "200AED", "150AED", "100AED", "50AED"], cardsData);
+    } else if (purchaseAmount > 15000 && purchaseAmount < 20000) {
+        selectedPrize = selectRandomAvailablePrize(["250AED", "200AED", "150AED", "100AED", "50AED"], cardsData);
+    } else if (purchaseAmount > 8000 && purchaseAmount < 15000) {
+        selectedPrize = selectRandomAvailablePrize(["200AED", "150AED", "100AED", "50AED"], cardsData);
+    } else if (purchaseAmount > 6000 && purchaseAmount < 8000) {
+        selectedPrize = selectRandomAvailablePrize(["150AED", "100AED", "50AED"], cardsData);
+    } else if (purchaseAmount > 4000 && purchaseAmount < 6000) {
+        selectedPrize = selectRandomAvailablePrize(["100AED", "50AED"], cardsData);
+    } else if (purchaseAmount > 2000 && purchaseAmount < 4000) {
+        selectedPrize = selectRandomAvailablePrize(["50AED"], cardsData);
+    } else {
+        selectedPrize = selectRandomAvailablePrize(["5% off in mc", "70 % off dmd"], cardsData);
+    }
+
+    return selectedPrize;
+}
+
+function selectRandomAvailablePrize(prizeOptions, cardsData) {
+    const availablePrizes = cardsData.filter(card => prizeOptions.includes(card.prizeName) && card.count > 0);
+    if (availablePrizes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availablePrizes.length);
+        return availablePrizes[randomIndex].prizeName;
+    }
+    return null;
+}
+
 
 
 // Function to initialize scratch card with data
 function initializeScratchCard(data) {
-    // console.log(data);
+    console.log(data);
     // Define a variable to store a reference to the timeout
     let scratchMoveTimeout;
 
@@ -256,7 +247,7 @@ function autoDownload() {
         ctx.font = '100px Arial';
         ctx.fillStyle = 'black';
         ctx.fillText(prize, 850, 1550); // Adjust position as needed
-        ctx.fillText(winnerID, 900, 1700);
+        ctx.fillText('Winner ID: ' + winnerID, 650, 1700);
         ctx.fillText(dateTime, 600, 1850);
 
         // Append canvas to document body (temporary for dataURL generation)
