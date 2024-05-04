@@ -21,6 +21,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+const input = document.querySelector("#inputPhoneNumber");
+let phoneNumber;
+
+// Initialize intlTelInput
+const iti = window.intlTelInput(input, {
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/js/utils.js",
+});
+
+// Listen for input event on phone number input field
+input.addEventListener('input', function () {
+    // Get the country code
+    const countryCode = iti.getSelectedCountryData().dialCode;
+    // Get the raw input value (without formatting)
+    const rawPhoneNumber = input.value;
+    // Concatenate country code with raw phone number
+    const phoneNumberWithCountryCode = '+' + countryCode + ' ' + rawPhoneNumber;
+    // Log the phone number with country code to the console
+    // console.log("Phone Number:", phoneNumberWithCountryCode);
+
+    phoneNumber = phoneNumberWithCountryCode
+});
+
+
 function formatAMPM(date) {
     let hours = date.getHours();
     let minutes = date.getMinutes();
@@ -57,7 +80,6 @@ async function saveChanges() {
     const uid = userID;
 
     const firstName = document.getElementById('inputFirstName').value.trim();
-    const phoneNumber = document.getElementById('inputPhoneNumber').value.trim();
     const email = document.getElementById('inputEmail').value.trim();
     const birthday = document.getElementById('inputBirthday').value.trim();
     const emirates = document.getElementById('inputEmirates').value.trim();
@@ -72,7 +94,7 @@ async function saveChanges() {
     }
 
     // Validate inputs
-    if (validateInputs(firstName, phoneNumber, email, birthday, emirates, nationality, state, posNo, purchaseAmount)) {
+    if (validateInputs(firstName, email, birthday, emirates, nationality, state, posNo, purchaseAmount)) {
         const userDocRef = collection(firestore, `users/${uid}/table`);
 
         // Check if posNo already exists
@@ -122,18 +144,18 @@ async function saveChanges() {
 }
 
 
-function validateInputs(firstName, phoneNumber, email, birthday, emirates, nationality, state, posNo, purchaseAmount) {
-    if (!firstName || !phoneNumber || !email || !birthday || !emirates || !nationality || !state || !posNo || !purchaseAmount) {
+function validateInputs(firstName, email, birthday, emirates, nationality, state, posNo, purchaseAmount) {
+    if (!firstName || !email || !birthday || !emirates || !nationality || !state || !posNo || !purchaseAmount) {
         showError('Please fill in all required fields.');
         return false;
     }
 
-    // Validate phone number
-    const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(phoneNumber)) {
-        showError('Please enter a valid phone number.');
-        return false;
-    }
+    // // Validate phone number
+    // const phoneRegex = /^\d{9}$/;
+    // if (!phoneRegex.test(phoneNumber)) {
+    //     showError('Please enter a valid phone number.');
+    //     return false;
+    // }
 
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

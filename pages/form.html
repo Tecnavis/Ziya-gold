@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/css/intlTelInput.css">
   <style>
     /* -----------------font_style */
     .montserrat-400 {
@@ -223,15 +224,7 @@
             placeholder="Email address" required />
         </div>
         <div class="form-group col-12">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <select class="custom-select" id="countryCodeSelect">
-                <option value="+971">UAE (+971)</option>
-                <!-- Add other country codes as needed -->
-              </select>
-            </div>
-            <input type="phone" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required />
-          </div>
+          <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required />
         </div>
 
         <!-- <div class="form-group col-12">
@@ -311,6 +304,12 @@
       </div>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/22.0.2/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/22.0.2/js/utils.js"></script>
+<script>
+  
+</script>
+
 <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"></script>

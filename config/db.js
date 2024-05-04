@@ -13,6 +13,16 @@ const firebaseConfig = {
     measurementId: "G-L6XZ3W02FW"
 };
 
+// Configuration For Fixing Bugs When App is Live
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBkXS5aN0HO1YOeZN9YC9Tl-X-lqVpz86w",
+//     authDomain: "scratch-card-d1196.firebaseapp.com",
+//     projectId: "scratch-card-d1196",
+//     storageBucket: "scratch-card-d1196.appspot.com",
+//     messagingSenderId: "633923933151",
+//     appId: "1:633923933151:web:7a7ae3baa3b0bd90a26a6a"
+// };
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
