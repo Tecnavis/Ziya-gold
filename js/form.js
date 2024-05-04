@@ -26,6 +26,7 @@ let phoneNumber;
 
 // Initialize intlTelInput
 const iti = window.intlTelInput(input, {
+    initialCountry: "ae",
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/js/utils.js",
 });
 
@@ -38,7 +39,7 @@ input.addEventListener('input', function () {
     // Concatenate country code with raw phone number
     const phoneNumberWithCountryCode = '+' + countryCode + ' ' + rawPhoneNumber;
     // Log the phone number with country code to the console
-    // console.log("Phone Number:", phoneNumberWithCountryCode);
+    console.log("Phone Number:", phoneNumberWithCountryCode);
 
     phoneNumber = phoneNumberWithCountryCode
 });
