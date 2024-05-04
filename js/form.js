@@ -20,19 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// function getIp() {
-//     fetch('https://api.ipify.org?format=json')
-//         .then(response => response.json())
-//         .then(data => {
-//             const ipAddress = data.ip;
-//             console.log('User IP Address:', ipAddress);
-//         })
-//         .catch(error => {
-//             console.error('Error fetching IP address:', error);
-//         });
-// }
-
-// getIp()
 
 function formatAMPM(date) {
     let hours = date.getHours();

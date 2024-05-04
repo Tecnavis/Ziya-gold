@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet" />
-
   <style>
     /* -----------------font_style */
     .montserrat-400 {
@@ -224,9 +223,17 @@
             placeholder="Email address" required />
         </div>
         <div class="form-group col-12">
-          <!-- <label for="exampleInputPhone1">Phone Number</label> -->
-          <input type="phone" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required />
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <select class="custom-select" id="countryCodeSelect">
+                <option value="+971">UAE (+971)</option>
+                <!-- Add other country codes as needed -->
+              </select>
+            </div>
+            <input type="phone" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required />
+          </div>
         </div>
+
         <!-- <div class="form-group col-12">
           <label for="exampleInputPlace1">place</label>
           <input type="text" class="form-control" id="inputPlace" required placeholder="Place" />
