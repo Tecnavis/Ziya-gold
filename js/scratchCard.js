@@ -284,10 +284,3 @@ function resetAndRedirect() {
         }, 10000); // Adjust delay if needed
     }
 }
-
-
-
-
-
-
-
